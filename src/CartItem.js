@@ -14,6 +14,22 @@ class CartItem extends React.Component{
     }
     increaseQty = () => {
         console.log(this.state);
+        // naive thought
+        // this.state.qty += 1;
+        // but this will only increase value in state and not be shown in webpage
+        // because react does'nt knows we incread the value
+        // so, react gives a sp function to set state value
+
+        // setState form 1 - shallow merging
+        // this.setState({
+        //     qty: this.state.qty + 1
+        // })
+        // setState form 2
+        this.setState((prevState) => {
+            return {
+                qty: prevState.qty + 1
+            }
+        })
     }
     render() {
         const {price, title, qty} = this.state;
