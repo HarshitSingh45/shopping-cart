@@ -30,6 +30,41 @@ class Cart extends React.Component{
             ]
         }
     }
+    handleIncreaseQty = (product) => {
+        console.log('Hey increase the qty of ', product);
+        const { products } = this.state;
+        const index = products.indexOf(product);
+
+        products[index].qty += 1;
+
+        this.setState({ 
+            products: products
+            // or simply write products
+        })
+    }
+    handleDecreaseQty = (product) => {
+        const { products } = this.state;
+        const index = products.indexOf(product);
+
+        if(products[index].qty === 0){
+            return;
+        }
+
+        products[index].qty -= 1;
+
+        this.setState({
+            products
+        })
+    }
+    handleDeleteProduct = (id) => {
+        const { products } = this.state;
+
+        const items = products.filter((item) => item.id !== id);
+
+        this.setState({
+            products: items
+        })
+    }
     render() {
         // how to render list of item in react
         // const arr = [1,2,3,4,5];
@@ -62,7 +97,9 @@ class Cart extends React.Component{
                        <CartItem 
                           product = {product} 
                           key={ product.id } 
-                        //   we can pass almost anything in props
+                          onIncreaseQty = { this.handleIncreaseQty  }
+                          onDecreaseQty = { this.handleDecreaseQty }
+                          onDeleteProduct = { this.handleDeleteProduct }                        //   we can pass almost anything in props
                         //   func = { () => console.log(' Passing function in props ')}
                         //   isLoggedIn = { false }
                         //   jsx = { <h1>Test</h1> } 
