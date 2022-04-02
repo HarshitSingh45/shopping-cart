@@ -6,7 +6,7 @@ class Cart extends React.Component{
         // how to render list of item in react
         // const arr = [1,2,3,4,5];
         // return (
-                //  <div className="cart">
+                //  <div className="cart"> 
                 //      {arr}
                 // </div>
                 // op 12345
