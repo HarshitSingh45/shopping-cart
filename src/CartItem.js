@@ -7,7 +7,6 @@ class CartItem extends React.Component{
             price: 999,
             title: 'Mobile Phone',
             qty: 1,
-            number: 1,
             img: ''
         }
         // if we have multiple event handler we can bin them here
@@ -79,6 +78,7 @@ class CartItem extends React.Component{
     }
     
     render() {
+        // console.log(this.props);
         const {price, title, qty} = this.state;
         return (
             <div className="cart-item">
