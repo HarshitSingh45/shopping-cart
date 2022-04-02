@@ -1,17 +1,17 @@
 import React from "react";
 
 class CartItem extends React.Component{
-    constructor () {
-        super();
-        this.state = {
-            price: 999,
-            title: 'Mobile Phone',
-            qty: 1,
-            img: ''
-        }
-        // if we have multiple event handler we can bin them here
-        // this.increaseQty = this.increaseQty.bind(this);
-    }
+    // constructor () {
+    //     super();
+    //     this.state = {
+    //         price: 999,
+    //         title: 'Mobile Phone',
+    //         qty: 1,
+    //         img: ''
+    //     }
+    //     // if we have multiple event handler we can bin them here
+    //     // this.increaseQty = this.increaseQty.bind(this);
+    // }
     increaseQty = () => {
         console.log(this.state);
         // this.setState is asynchronous 
@@ -79,9 +79,12 @@ class CartItem extends React.Component{
     
     render() {
         // console.log(this.props);
-        const {price, title, qty} = this.state;
+        // const {price, title, qty} = this.state;
+        const {price, title, qty} = this.props.product; 
+
         return (
             <div className="cart-item">
+                {/* {this.props.jsx} */}
                 <div className="left-block">
                     <img style={styles.image} />
                 </div>

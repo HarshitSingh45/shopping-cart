@@ -2,6 +2,34 @@ import React from "react";
 import CartItem from "./CartItem";
 
 class Cart extends React.Component{
+    constructor () {
+        super();
+        this.state = {
+            products: [
+                {
+                    price: 999,
+                    title: 'Mobile Phone',
+                    qty: 1,
+                    img: '',
+                    id: 1
+                },
+                {
+                    price: 10999,
+                    title: 'Laptop',
+                    qty: 10,
+                    img: '',
+                    id: 2
+                },
+                {
+                    price: 1000,
+                    title: 'Watches',
+                    qty: 100,
+                    img: '',
+                    id: 3
+                }
+            ]
+        }
+    }
     render() {
         // how to render list of item in react
         // const arr = [1,2,3,4,5];
@@ -26,9 +54,28 @@ class Cart extends React.Component{
         // <CartItem qty={1} price={99} title={'watch'} img={''} />
         // it will be visible in cartitem check by console.log(this.props)
 
+        const {products} = this.state;
         return (
             <div className="cart">
-                <CartItem qty={1} price={99} title={'watch'} img={''} />
+                {products.map((product) => {
+                    return (
+                       <CartItem 
+                          product = {product} 
+                          key={ product.id } 
+                        //   we can pass almost anything in props
+                        //   func = { () => console.log(' Passing function in props ')}
+                        //   isLoggedIn = { false }
+                        //   jsx = { <h1>Test</h1> } 
+                        //   comp = { <CartItem /> }
+                        />
+                    )
+                    // If the parent want to share data with childrens it can  use props  
+                    // if we dont use keys we will get warning in console
+                    // beacuse react doesnt knows to differetiate between diff cartitems
+                    // if we made change in any one cartitem then react doesnt know in which cartitem it shouls make change
+                     
+                })}
+                {/* <CartItem qty={1} price={99} title={'watch'} img={''} /> */}
             </div>
         )
     }
