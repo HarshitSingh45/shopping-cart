@@ -1,6 +1,7 @@
 import React from "react";
 
-class CartItem extends React.Component{
+// class CartItem extends React.Component{
+   const CartItem = (props) => {
     // constructor () {
     //     super();
     //     this.state = {
@@ -12,8 +13,8 @@ class CartItem extends React.Component{
     //     // if we have multiple event handler we can bin them here
     //     // this.increaseQty = this.increaseQty.bind(this);
     // }
-    increaseQty = () => {
-        console.log(this.state);
+    // increaseQty = () => {
+        // console.log(this.state);
         // this.setState is asynchronous 
 
         // naive thought
@@ -37,11 +38,11 @@ class CartItem extends React.Component{
 
         // setState form 2
         // when we need to change value according to previous form then we use this 
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty + 1
-            }
-        })
+        // this.setState((prevState) => {
+            // return {
+                // qty: prevState.qty + 1
+            // }
+        // })
         // if we write this.setState 3 times then unlike form 1 here value will increment by 3
         // but page will be rendered only once
         // in this form all callbacks will be stored in a queue and executes in fifo fashion
@@ -64,24 +65,26 @@ class CartItem extends React.Component{
         // })
 
         // in ajax call or in promises react doesnt do batching for us
-    }
-    decreaseQty = () => {
-        const { qty } = this.state;
-        if(qty === 0){
-            return;
-        }
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty - 1
-            }
-        })
-    }
+    // }
+    // decreaseQty = () => {
+    //     const { qty } = this.state;
+    //     if(qty === 0){
+    //         return;
+    //     }
+    //     this.setState((prevState) => {
+    //         return {
+    //             qty: prevState.qty - 1
+    //         }
+    //     })
+    // }
     
-    render() {
+    // render() {
         // console.log(this.props);
         // const {price, title, qty} = this.state;
-        const {price, title, qty} = this.props.product; 
-        const {product, onIncreaseQty, onDecreaseQty, onDeleteProduct} = this.props;
+        // const {price, title, qty} = this.props.product; 
+        // const {product, onIncreaseQty, onDecreaseQty, onDeleteProduct} = this.props;
+        const {price, title, qty} = props.product; 
+        const {product, onIncreaseQty, onDecreaseQty, onDeleteProduct} = props;
 
         return (
             <div className="cart-item">
@@ -122,8 +125,8 @@ class CartItem extends React.Component{
 
                 </div>
             </div>
-        );
-    }
+        )
+    // }
 }
 
 const styles = {

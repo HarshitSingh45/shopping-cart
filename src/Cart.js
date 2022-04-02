@@ -1,71 +1,72 @@
 import React from "react";
 import CartItem from "./CartItem";
 
-class Cart extends React.Component{
-    constructor () {
-        super();
-        this.state = {
-            products: [
-                {
-                    price: 999,
-                    title: 'Mobile Phone',
-                    qty: 1,
-                    img: '',
-                    id: 1
-                },
-                {
-                    price: 10999,
-                    title: 'Laptop',
-                    qty: 10,
-                    img: '',
-                    id: 2
-                },
-                {
-                    price: 1000,
-                    title: 'Watches',
-                    qty: 100,
-                    img: '',
-                    id: 3
-                }
-            ]
-        }
-    }
-    handleIncreaseQty = (product) => {
-        console.log('Hey increase the qty of ', product);
-        const { products } = this.state;
-        const index = products.indexOf(product);
+// class Cart extends React.Component{
+    const Cart = (props) => {
+    // constructor () {
+    //     super();
+    //     this.state = {
+    //         products: [
+    //             {
+    //                 price: 999,
+    //                 title: 'Mobile Phone',
+    //                 qty: 1,
+    //                 img: '',
+    //                 id: 1
+    //             },
+    //             {
+    //                 price: 10999,
+    //                 title: 'Laptop',
+    //                 qty: 10,
+    //                 img: '',
+    //                 id: 2
+    //             },
+    //             {
+    //                 price: 1000,
+    //                 title: 'Watches',
+    //                 qty: 100,
+    //                 img: '',
+    //                 id: 3
+    //             }
+    //         ]
+    //     }
+    // }
+    // handleIncreaseQty = (product) => {
+    //     console.log('Hey increase the qty of ', product);
+    //     const { products } = this.state;
+    //     const index = products.indexOf(product);
 
-        products[index].qty += 1;
+    //     products[index].qty += 1;
 
-        this.setState({ 
-            products: products
-            // or simply write products
-        })
-    }
-    handleDecreaseQty = (product) => {
-        const { products } = this.state;
-        const index = products.indexOf(product);
+    //     this.setState({ 
+    //         products: products
+    //         // or simply write products
+    //     })
+    // }
+    // handleDecreaseQty = (product) => {
+    //     const { products } = this.state;
+    //     const index = products.indexOf(product);
 
-        if(products[index].qty === 0){
-            return;
-        }
+    //     if(products[index].qty === 0){
+    //         return;
+    //     }
 
-        products[index].qty -= 1;
+    //     products[index].qty -= 1;
 
-        this.setState({
-            products
-        })
-    }
-    handleDeleteProduct = (id) => {
-        const { products } = this.state;
+    //     this.setState({
+    //         products
+    //     })
+    // }
+    // handleDeleteProduct = (id) => {
+    //     const { products } = this.state;
 
-        const items = products.filter((item) => item.id !== id);
+    //     const items = products.filter((item) => item.id !== id);
 
-        this.setState({
-            products: items
-        })
-    }
-    render() {
+    //     this.setState({
+    //         products: items
+    //     })
+    // }
+    // render() {
         // how to render list of item in react
         // const arr = [1,2,3,4,5];
         // return (
@@ -89,7 +90,7 @@ class Cart extends React.Component{
         // <CartItem qty={1} price={99} title={'watch'} img={''} />
         // it will be visible in cartitem check by console.log(this.props)
 
-        const {products} = this.state;
+        const {products } = props;
         return (
             <div className="cart">
                 {products.map((product) => {
@@ -97,9 +98,9 @@ class Cart extends React.Component{
                        <CartItem 
                           product = {product} 
                           key={ product.id } 
-                          onIncreaseQty = { this.handleIncreaseQty  }
-                          onDecreaseQty = { this.handleDecreaseQty }
-                          onDeleteProduct = { this.handleDeleteProduct }                        //   we can pass almost anything in props
+                          onIncreaseQty = { props.onIncreaseQty  }
+                          onDecreaseQty = { props.onDecreaseQty }
+                          onDeleteProduct = { props.onDeleteProduct }                        //   we can pass almost anything in props
                         //   func = { () => console.log(' Passing function in props ')}
                         //   isLoggedIn = { false }
                         //   jsx = { <h1>Test</h1> } 
@@ -115,7 +116,7 @@ class Cart extends React.Component{
                 {/* <CartItem qty={1} price={99} title={'watch'} img={''} /> */}
             </div>
         )
-    }
+    // }
 }
 
 export default Cart;
